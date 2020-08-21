@@ -31,7 +31,7 @@ def get_db_password_entry(username):
     if data != []:
         return data[0][0]
     else:
-        return False
+        return None
 
 
 @app.route('/')
@@ -45,7 +45,7 @@ def do_admin_login():
     username = request.form['username']
     password = request.form['password']
     if not_empty_login(username, password):
-        if (db_password := get_db_password_entry(username)) is not False:
+        if (db_password := get_db_password_entry(username)) is not None:
             if password_check(password, db_password):
                 return render_template('secret_page.html', username=username)
 
