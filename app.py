@@ -53,5 +53,9 @@ def do_admin_login():
 
 
 if __name__ == "__main__":
+    # Add user - for testing
+    password = sha256("testpassword".encode()).hexdigest()
+    DATABASE.write("Jake", password)
+
     app.secret_key = os.urandom(12)
     app.run(debug=True, host='0.0.0.0', port=4000)

@@ -6,6 +6,7 @@ from datetime import datetime
 class DataBase:
     def __init__(self):
         self.db_name = "database.db"
+        self.setup_db()
 
     def check_file(self):
         # Check for db
